@@ -15,7 +15,9 @@ public:
 		free(array);
 	}
 
-
+	bool add() {
+		return add(NULL);
+	}
 	bool add(T new_element) {
 		return add(&new_element);
 	}
@@ -34,7 +36,9 @@ public:
 			array = new_pointer;
 		}
 
-		memcpy(array + getSize(), new_element, sizeof(T));
+		if (new_element != NULL) {
+			memcpy(array + getSize(), new_element, sizeof(T));
+		}
 		size++;
 
 		return true;
