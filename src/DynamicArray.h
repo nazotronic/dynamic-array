@@ -39,6 +39,9 @@ public:
 		if (new_element != NULL) {
 			memcpy(array + getSize(), new_element, sizeof(T));
 		}
+		else {
+			memset(array + getSize(), 0, sizeof(T));
+		}
 		size++;
 
 		return true;
