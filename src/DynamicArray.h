@@ -60,7 +60,7 @@ public:
 		size--;
 
 		if (!(getSize() % getStep()) ) {
-			T* new_pointer = (T*) realloc(array, getSize() * sizeof(T));
+			array = (T*) realloc(array, getSize() * sizeof(T));
 
 			if (!getSize()) {
 				free(array);
