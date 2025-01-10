@@ -5,6 +5,10 @@
 #include "stdint.h"
 #include "string.h"
 
+#include "DynamicArray.h"
+
+using namespace std;
+
 #define DISABLE_MAX_SIZE 0
 #define DEFAULT_STEP 10
 
@@ -13,6 +17,12 @@ class DynamicArray {
 public:
 	~DynamicArray() {
 		free(array);
+
+		array = NULL;
+		size = 0;
+
+		step = DEFAULT_STEP;
+		max_size = DISABLE_MAX_SIZE;
 	}
 
 	bool add() {
