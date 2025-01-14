@@ -5,10 +5,6 @@
 #include "stdint.h"
 #include "string.h"
 
-#include "DynamicArray.h"
-
-using namespace std;
-
 #define DISABLE_MAX_SIZE 0
 #define DEFAULT_STEP 10
 
@@ -16,6 +12,10 @@ template <typename T>
 class DynamicArray {
 public:
 	~DynamicArray() {
+		clear();
+	}
+
+	void clear() {
 		free(array);
 
 		array = NULL;
@@ -24,6 +24,7 @@ public:
 		step = DEFAULT_STEP;
 		max_size = DISABLE_MAX_SIZE;
 	}
+
 
 	bool add() {
 		return add(NULL);
@@ -35,10 +36,10 @@ public:
 		if (getMaxSize() && getSize() == getMaxSize()) {
 			return false;
 		}
-
+		
 		if (!(getSize() % getStep()) ) {
 			T* new_pointer = (T*) realloc(array, (getSize() + 10) * sizeof(T));
-
+			
 			if (new_pointer == NULL) {
 				return false;
 			}
